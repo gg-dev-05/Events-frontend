@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import Past from './Components/Past/Past'
+import Ongoing from './Components/Ongoing/Ongoing'
+import Upcoming from './Components/Upcoming/Upcoming'
+import './App.css'
+import { useState } from 'react'
 
 function App() {
+
+  var [variable, setVariable] = useState(0)
+
+  var increment = () => {
+    setVariable(current => current + 1)
+  }
+
+  var decrement = () => {
+    setVariable(current => current - 1)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Past />
+      <Ongoing />
+      <Upcoming />
+
+      <div className="buttons">
+        <button onClick={decrement}>-</button>
+        <span>{variable}</span>
+        <button onClick={increment}>+</button>
+      </div>
+
     </div>
   );
 }
